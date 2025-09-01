@@ -17,6 +17,7 @@ namespace Tugas1
         {
             InitializeComponent();
         }
+
         BindingList<User> users = new BindingList<User>();
         private static string phonePattern = @"^(\+62|62|0)(8[1-9][0-9])[0-9]{6,9}$";
         private static Regex phoneRegex = new Regex(phonePattern, RegexOptions.Compiled);
@@ -84,6 +85,7 @@ namespace Tugas1
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             if (isEmpty(textBox1.Text) || 
                 isEmpty(textBox2.Text) || 
                 isEmpty(textBox3.Text) || 
@@ -98,6 +100,7 @@ namespace Tugas1
                 MessageBox.Show("Please fill all the fields.");
                 return;
             }
+
             if (textBox2.Text != textBox3.Text)
             {
                 MessageBox.Show("Password and Confirm Password do not match.");
@@ -154,6 +157,214 @@ namespace Tugas1
         {
             comboBox2.DataSource = users;
             comboBox2.DisplayMember = "username";
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (!isEmpty(textBox1.Text))
+            {
+                try
+                {
+
+                    progressBar1.Value += 10;
+                }
+                catch (Exception ex)
+                {
+                    progressBar1.Value = 100;
+                }
+            }
+            else
+            {
+                progressBar1.Value -= 10;
+            }
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (!isEmpty(textBox2.Text))
+            {
+                try
+                {
+
+                    progressBar1.Value += 5;
+                }
+                catch (Exception ex)
+                {
+                    progressBar1.Value = 100;
+                }
+            }
+            else
+            {
+                progressBar1.Value -= 5;
+            }
+        }
+
+        private void textBox3_Leave(object sender, EventArgs e)
+        {
+            if (!isEmpty(textBox3.Text))
+            {
+                try
+                {
+
+                    progressBar1.Value += 5;
+                }
+                catch (Exception ex)
+                {
+                    progressBar1.Value = 100;
+                }
+            }
+            else
+            {
+                progressBar1.Value -= 5;
+            }
+        }
+
+        private void textBox6_Leave(object sender, EventArgs e)
+        {
+            if (isEmailValid(textBox6.Text))
+            {
+                try
+                {
+                    progressBar1.Value += 10;
+                }
+                catch (Exception ex)
+                {
+                    progressBar1.Value = 100;
+                }
+            }
+            else
+            {
+                progressBar1.Value -= 10;
+            }
+        }
+
+        private void textBox4_Leave(object sender, EventArgs e)
+        {
+            if (IsValidIndonesianPhone(textBox4.Text))
+            {
+                try
+                {
+                    progressBar1.Value += 10;
+                }
+                catch (Exception ex)
+                {
+                    progressBar1.Value = 100;
+                }
+            }
+            else
+            {
+                progressBar1.Value -= 10;
+            }
+        }
+
+        private void textBox7_Leave(object sender, EventArgs e)
+        {
+            if (!isEmpty(textBox7.Text))
+            {
+                try
+                {
+                    progressBar1.Value += 10;
+                }
+                catch (Exception ex)
+                {
+                    progressBar1.Value = 100;
+                }
+            }
+            else
+            {
+                progressBar1.Value -= 10;
+            }
+        }
+
+        private void comboBox1_Leave(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem != null)
+            {
+                try
+                {
+                    progressBar1.Value += 10;
+                }
+                catch (Exception ex)
+                {
+                    progressBar1.Value = 100;
+                }
+            }
+            else
+            {
+                progressBar1.Value -= 10;
+            }
+        }
+
+        private void groupBox1_Leave(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked || radioButton2.Checked)
+            {
+                try
+                {
+                    progressBar1.Value += 10;
+                }
+                catch (Exception ex)
+                {
+                    progressBar1.Value = 100;
+                }
+            }
+            else
+            {
+                progressBar1.Value -= 10;
+            }
+        }
+
+        private void numericUpDown1_Leave(object sender, EventArgs e)
+        {
+            if (numericUpDown1.Value > 0)
+            {
+                try
+                {
+                    progressBar1.Value += 10;
+                }
+                catch (Exception ex)
+                {
+                    progressBar1.Value = 100;
+                }
+            }
+            else
+            {
+                progressBar1.Value -= 10;
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == textBox3.Text && !isEmpty(textBox2.Text) && !isEmpty(textBox3.Text))
+            {
+                try
+                {
+                    progressBar1.Value += 5;
+                }
+                catch (Exception ex)
+                {
+                    progressBar1.Value = 100;
+                }
+            }
+            else
+            {
+                progressBar1.Value -= 5;
+            }
         }
     }
 }
