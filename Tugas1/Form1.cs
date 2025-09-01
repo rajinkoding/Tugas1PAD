@@ -32,15 +32,6 @@ namespace Tugas1
 
             return phoneRegex.IsMatch(cleanNumber);
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private bool formValidation()
         {
@@ -59,25 +50,6 @@ namespace Tugas1
                 return false;
             }
         }
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private bool isEmpty(string value)
         {
             return string.IsNullOrWhiteSpace(value);
@@ -86,12 +58,12 @@ namespace Tugas1
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (isEmpty(textBox1.Text) || 
-                isEmpty(textBox2.Text) || 
-                isEmpty(textBox3.Text) || 
-                isEmpty(textBox4.Text) || 
-                isEmpty(textBox5.Text) || 
-                isEmpty(textBox6.Text) || 
+            if (isEmpty(textBox1.Text) ||
+                isEmpty(textBox2.Text) ||
+                isEmpty(textBox3.Text) ||
+                isEmpty(textBox4.Text) ||
+                isEmpty(textBox5.Text) ||
+                isEmpty(textBox6.Text) ||
                 isEmpty(textBox7.Text) ||
                 comboBox1.SelectedItem == null ||
                 (!radioButton1.Checked && !radioButton2.Checked)
@@ -159,212 +131,72 @@ namespace Tugas1
             comboBox2.DisplayMember = "username";
         }
 
-        private void label10_Click(object sender, EventArgs e)
+        private void UpdateProgress()
         {
+            int progress = 0;
 
-        }
+            if (!isEmpty(textBox1.Text)) progress += 10;
+            if (!isEmpty(textBox2.Text)) progress += 10;
+            if (!isEmpty(textBox3.Text)) progress += 10;
+            if (IsValidIndonesianPhone(textBox4.Text)) progress += 10;
+            if (!isEmpty(textBox5.Text)) progress += 10;
+            if (isEmailValid(textBox6.Text)) progress += 10;
+            if (!isEmpty(textBox7.Text)) progress += 10;
+            if (comboBox1.SelectedItem != null) progress += 10;
+            if (radioButton1.Checked || radioButton2.Checked) progress += 10;
+            if (numericUpDown1.Value > 0) progress += 10;
 
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
+            progressBar1.Value = progress;
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
         {
-            if (!isEmpty(textBox1.Text))
-            {
-                try
-                {
+            UpdateProgress();
+        }
 
-                    progressBar1.Value += 10;
-                }
-                catch (Exception ex)
-                {
-                    progressBar1.Value = 100;
-                }
-            }
-            else
-            {
-                progressBar1.Value -= 10;
-            }
+        private void textBox5_Leave(object sender, EventArgs e)
+        {
+            UpdateProgress();
         }
 
         private void textBox2_Leave(object sender, EventArgs e)
         {
-            if (!isEmpty(textBox2.Text))
-            {
-                try
-                {
-
-                    progressBar1.Value += 5;
-                }
-                catch (Exception ex)
-                {
-                    progressBar1.Value = 100;
-                }
-            }
-            else
-            {
-                progressBar1.Value -= 5;
-            }
+            UpdateProgress();
         }
 
         private void textBox3_Leave(object sender, EventArgs e)
         {
-            if (!isEmpty(textBox3.Text))
-            {
-                try
-                {
-
-                    progressBar1.Value += 5;
-                }
-                catch (Exception ex)
-                {
-                    progressBar1.Value = 100;
-                }
-            }
-            else
-            {
-                progressBar1.Value -= 5;
-            }
-        }
-
-        private void textBox6_Leave(object sender, EventArgs e)
-        {
-            if (isEmailValid(textBox6.Text))
-            {
-                try
-                {
-                    progressBar1.Value += 10;
-                }
-                catch (Exception ex)
-                {
-                    progressBar1.Value = 100;
-                }
-            }
-            else
-            {
-                progressBar1.Value -= 10;
-            }
-        }
-
-        private void textBox4_Leave(object sender, EventArgs e)
-        {
-            if (IsValidIndonesianPhone(textBox4.Text))
-            {
-                try
-                {
-                    progressBar1.Value += 10;
-                }
-                catch (Exception ex)
-                {
-                    progressBar1.Value = 100;
-                }
-            }
-            else
-            {
-                progressBar1.Value -= 10;
-            }
-        }
-
-        private void textBox7_Leave(object sender, EventArgs e)
-        {
-            if (!isEmpty(textBox7.Text))
-            {
-                try
-                {
-                    progressBar1.Value += 10;
-                }
-                catch (Exception ex)
-                {
-                    progressBar1.Value = 100;
-                }
-            }
-            else
-            {
-                progressBar1.Value -= 10;
-            }
-        }
-
-        private void comboBox1_Leave(object sender, EventArgs e)
-        {
-            if (comboBox1.SelectedItem != null)
-            {
-                try
-                {
-                    progressBar1.Value += 10;
-                }
-                catch (Exception ex)
-                {
-                    progressBar1.Value = 100;
-                }
-            }
-            else
-            {
-                progressBar1.Value -= 10;
-            }
-        }
-
-        private void groupBox1_Leave(object sender, EventArgs e)
-        {
-            if (radioButton1.Checked || radioButton2.Checked)
-            {
-                try
-                {
-                    progressBar1.Value += 10;
-                }
-                catch (Exception ex)
-                {
-                    progressBar1.Value = 100;
-                }
-            }
-            else
-            {
-                progressBar1.Value -= 10;
-            }
+            UpdateProgress();
         }
 
         private void numericUpDown1_Leave(object sender, EventArgs e)
         {
-            if (numericUpDown1.Value > 0)
-            {
-                try
-                {
-                    progressBar1.Value += 10;
-                }
-                catch (Exception ex)
-                {
-                    progressBar1.Value = 100;
-                }
-            }
-            else
-            {
-                progressBar1.Value -= 10;
-            }
+            UpdateProgress();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void groupBox1_Leave(object sender, EventArgs e)
         {
-
+            UpdateProgress();
         }
 
-        private void panel1_Leave(object sender, EventArgs e)
+        private void comboBox1_Leave(object sender, EventArgs e)
         {
-            if (textBox2.Text == textBox3.Text && !isEmpty(textBox2.Text) && !isEmpty(textBox3.Text))
-            {
-                try
-                {
-                    progressBar1.Value += 5;
-                }
-                catch (Exception ex)
-                {
-                    progressBar1.Value = 100;
-                }
-            }
-            else
-            {
-                progressBar1.Value -= 5;
-            }
+            UpdateProgress();
+        }
+
+        private void textBox6_Leave(object sender, EventArgs e)
+        {
+            UpdateProgress();
+        }
+
+        private void textBox4_Leave(object sender, EventArgs e)
+        {
+            UpdateProgress();
+        }
+
+        private void textBox7_Leave(object sender, EventArgs e)
+        {
+            UpdateProgress();
         }
     }
 }
